@@ -100,6 +100,7 @@ if [[ "$PLATFORM" == "darwin" ]]; then
   check_and_install "wezterm" "brew install --cask wezterm"
   check_and_install "zsh" "brew install zsh"
   check_and_install "fzf" "brew install fzf"
+  check_and_install "neovim" "brew install neovim"
   check_and_install "ngrok" "brew install ngrok/ngrok/ngrok"
   check_and_install_oh_my_zsh
   check_and_install_rust
@@ -128,5 +129,5 @@ if [[ "$PLATFORM" == "darwin" ]]; then
   copy_if_not_exist "$TEMP_DIR/$PLATFORM/terminal/zellij" "$ZELLIJ_CONFIG_DIR"
   copy_if_not_exist "$TEMP_DIR/$PLATFORM/terminal/nvim" "$NEOVIM_CONFIG_DIR"
 
-  echo "Copy ... OK"
+  echo "Installation ... OK"
 fi
