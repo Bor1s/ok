@@ -52,7 +52,7 @@ check_and_install_zellij() {
   fi
 }
 
-copy_if_exists() {
+copy_if_not_exists() {
   local source=$1
   local target=$2
 
@@ -113,10 +113,10 @@ ZELLIJ_CONFIG_DIR="$HOME/.config/zellij"
 NEOVIM_CONFIG_DIR="$HOME/.config/nvim"
 
 # TODO: think more about how to extend .zshrc file file and not overwrite it.
-overwrite_file "$TEMP_DIR/platforms/$PLATFORM/terminal/zsh/.zshrc" "$ZSH_CONFIG_FILE"
-copy_if_exists "$TEMP_DIR/platforms/$PLATFORM/terminal/wezterm/.wezterm.lua" "$WEZTERM_CONFIG_FILE"
-copy_if_exists "$TEMP_DIR/platforms/$PLATFORM/terminal/wezterm" "$WEZTERM_CONFIG_DIR"
-copy_if_exists "$TEMP_DIR/platforms/$PLATFORM/terminal/zellij" "$ZELLIJ_CONFIG_DIR"
-copy_if_exists "$TEMP_DIR/platforms/$PLATFORM/terminal/nvim" "$NEOVIM_CONFIG_DIR"
+overwrite_file "$TEMP_DIR/platforms/$PLATFORM/terminal/zshrc/.zshrc" "$ZSH_CONFIG_FILE"
+copy_if_not_exists "$TEMP_DIR/platforms/$PLATFORM/terminal/wezterm/.wezterm.lua" "$WEZTERM_CONFIG_FILE"
+copy_if_not_exists "$TEMP_DIR/platforms/$PLATFORM/terminal/wezterm" "$WEZTERM_CONFIG_DIR"
+copy_if_not_exists "$TEMP_DIR/platforms/$PLATFORM/terminal/zellij" "$ZELLIJ_CONFIG_DIR"
+copy_if_not_exists "$TEMP_DIR/platforms/$PLATFORM/terminal/nvim" "$NEOVIM_CONFIG_DIR"
 
 echo "Installation ... OK"
