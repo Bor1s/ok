@@ -21,8 +21,12 @@ else
   PLATFORM="unknown"
 fi
 
+REPO_URL="https://github.com/Bor1s/ok.git"
+TEMP_DIR=$(mktemp -d)
+git clone "$REPO_URL" "$TEMP_DIR"
+
 # Path to platform-specific scripts
-SCRIPT_DIR="$(dirname "$0")/script"
+SCRIPT_DIR="$TEMP_DIR/script"
 SCRIPT_PATH="$SCRIPT_DIR/$PLATFORM.sh"
 
 # Run the platform-specific script
