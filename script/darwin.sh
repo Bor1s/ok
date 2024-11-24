@@ -37,6 +37,7 @@ check_and_install_rust() {
   else
     echo "Rust is not installed. Installing..."
     curl https://sh.rustup.rs -sSf | sh
+    source "$HOME/.cargo/env"
     echo "Rust ... OK"
   fi
 }
@@ -46,25 +47,27 @@ check_and_install_zellij() {
     echo "Zellij is already installed ... OK"
   else
     echo "Zellij is not installed. Installing..."
-    # cargo install --locked zellij
+    cargo install --locked zellij
     echo "Zellij ... OK"
   fi
 }
 
-copy_if_exists() {
+copy_if_not_exists() {
   local source=$1
   local target=$2
 
-  if [ -f "$target" ]; then
-    echo "$target ... OK"
-  else
-    cp "$source" "$target"
+  # Ensure the parent directory exists
+  mkdir -p "$(dirname "$target")"
 
-    if [ -d "$target" ]; then
-      echo "$target ... OK"
-    else
+  if [ -e "$target" ]; then
+    echo "$target already exists ... OK"
+  else
+    if [ -d "$source" ]; then
       cp -r "$source" "$target"
+    else
+      cp "$source" "$target"
     fi
+    echo "$target ... OK"
   fi
 }
 
@@ -109,7 +112,7 @@ ZELLIJ_CONFIG_DIR="$HOME/.config/zellij"
 NEOVIM_CONFIG_DIR="$HOME/.config/nvim"
 
 # TODO: think more about how to extend .zshrc file file and not overwrite it.
-overwrite_file "$TEMP_DIR/platforms/$PLATFORM/terminal/zsh/.zshrc" "$ZSH_CONFIG_FILE"
+overwrite_file "$TEMP_DIR/platforms/$PLATFORM/terminal/zshrc/.zshrc" "$ZSH_CONFIG_FILE"
 copy_if_not_exist "$TEMP_DIR/platfroms/$PLATFORM/terminal/wezterm/.wezterm.lua" "$WEZTERM_CONFIG_FILE"
 copy_if_not_exist "$TEMP_DIR/platforms/$PLATFORM/terminal/wezterm" "$WEZTERM_CONFIG_DIR"
 copy_if_not_exist "$TEMP_DIR/platforms/$PLATFORM/terminal/zellij" "$ZELLIJ_CONFIG_DIR"
