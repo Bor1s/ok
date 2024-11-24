@@ -56,16 +56,15 @@ copy_if_not_exists() {
   local source=$1
   local target=$2
 
-  if [ -f "$target" ]; then
-    echo "$target ... OK"
+  if [ -e "$target" ]; then
+    echo "$target already exists ... OK"
   else
-    cp "$source" "$target"
-
-    if [ -d "$target" ]; then
-      echo "$target ... OK"
+    if [ -d "$source" ]; then
+      cp -r "$source" "$target"
     else
-      cp -R "$source" "$target"
+      cp "$source" "$target"
     fi
+    echo "$target ... OK"
   fi
 }
 
