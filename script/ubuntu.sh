@@ -37,7 +37,7 @@ check_and_install_rust() {
   else
     echo "Rust is not installed. Installing..."
     curl https://sh.rustup.rs -sSf | sh -s -- -y
-    . "$HOME/.cargo/env"
+    sh "$HOME/.cargo/env"
     echo "Rust ... OK"
   fi
 }
