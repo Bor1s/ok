@@ -20,6 +20,7 @@ check_and_install() {
 
 install_fonts() {
   brew install --cask font-cascadia-code >>"$LOG_FILE" 2>&1
+  echo "Cascadia Code font...OK"
 }
 
 # Oh-my-zsh is an exception because "omz" commands is a function

@@ -10,7 +10,7 @@ check_and_install() {
   local install_cmd=$2
 
   if ! command -v "$tool" &>/dev/null; then
-    echo "$tool is not installed. Installing..."
+    echo "Installing $tool..."
     eval "$install_cmd" >>"$LOG_FILE" 2>&1
     echo "$tool ... OK"
   else
@@ -19,15 +19,15 @@ check_and_install() {
 }
 
 install_fonts() {
-  echo "Installing Cascadia Code font..."
   sudo apt-get install -y fonts-cascadia-code >>"$LOG_FILE" 2>&1
+  echo "Cascadia Code font...OK"
 }
 
 check_and_install_lazygit() {
   if command -v lazygit &>/dev/null; then
     echo "lazygit is already installed ... OK"
   else
-    echo "lazygit is not installed. Installing..."
+    echo "Installing lazygit..."
     LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | \grep -Po '"tag_name": *"v\K[^"]*') >>"$LOG_FILE" 2>&1
     curl -Lo lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/download/v${LAZYGIT_VERSION}/lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz" >>"$LOG_FILE" 2>&1
     tar xf lazygit.tar.gz lazygit >>"$LOG_FILE" 2>&1
@@ -40,7 +40,7 @@ check_and_install_wezterm() {
   if command -v wezterm &>/dev/null; then
     echo "wezterm is already installed ... OK"
   else
-    echo "wezterm is not installed. Installing..."
+    echo "Installing wezterm ..."
     curl -fsSL https://apt.fury.io/wez/gpg.key | sudo gpg --yes --dearmor -o /etc/apt/keyrings/wezterm-fury.gpg >>"$LOG_FILE" 2>&1
     echo 'deb [signed-by=/etc/apt/keyrings/wezterm-fury.gpg] https://apt.fury.io/wez/ * *' | sudo tee /etc/apt/sources.list.d/wezterm.list >>"$LOG_FILE" 2>&1
     sudo apt update >>"$LOG_FILE" 2>&1
@@ -64,7 +64,7 @@ check_and_install_rust() {
   if command -v rustup &>/dev/null; then
     echo "Rust is already installed ... OK"
   else
-    echo "Rust is not installed. Installing..."
+    echo "Installing Rust..."
     curl https://sh.rustup.rs -sSf | sh -s -- -y >>"$LOG_FILE" 2>&1
     source "$HOME/.cargo/env"
     echo "Rust ... OK"
@@ -75,7 +75,7 @@ check_and_install_zellij() {
   if command -v zellij &>/dev/null; then
     echo "Zellij is already installed ... OK"
   else
-    echo "Zellij is not installed. Installing..."
+    echo "Installing Zellij..."
     cargo install --locked zellij >>"$LOG_FILE" 2>&1
     echo "Zellij ... OK"
   fi
@@ -106,10 +106,6 @@ overwrite_file() {
 
   cp -f "$source" "$target" >>"$LOG_FILE" 2>&1
 }
-
-# Install necessary tools.
-
-echo "Installing tools"
 
 # Update package lists and install prerequisites
 sudo apt-get update >>"$LOG_FILE" 2>&1
@@ -144,7 +140,6 @@ ZSH_CONFIG_FILE="$HOME/.zshrc"
 ZELLIJ_CONFIG_DIR="$HOME/.config/zellij"
 NEOVIM_CONFIG_DIR="$HOME/.config/nvim"
 
-# TODO: think more about how to extend .zshrc file file and not overwrite it.
 overwrite_file "$TEMP_DIR/platforms/$PLATFORM/terminal/zshrc/.zshrc" "$ZSH_CONFIG_FILE"
 copy_if_not_exists "$TEMP_DIR/platforms/$PLATFORM/terminal/wezterm/.wezterm.lua" "$WEZTERM_CONFIG_FILE"
 copy_if_not_exists "$TEMP_DIR/platforms/$PLATFORM/terminal/wezterm" "$WEZTERM_CONFIG_DIR"
