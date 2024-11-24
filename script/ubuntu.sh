@@ -56,6 +56,9 @@ copy_if_not_exists() {
   local source=$1
   local target=$2
 
+  # Ensure the parent directory exists
+  mkdir -p "$(dirname "$target")"
+
   if [ -e "$target" ]; then
     echo "$target already exists ... OK"
   else
