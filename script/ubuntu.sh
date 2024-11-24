@@ -23,6 +23,13 @@ install_fonts() {
   sudo apt-get install -y fonts-cascadia-code >>"$LOG_FILE" 2>&1
 }
 
+check_and_install_lazygit() {
+  LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | \grep -Po '"tag_name": *"v\K[^"]*') >>"$LOG_FILE" 2>&1
+  curl -Lo lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/download/v${LAZYGIT_VERSION}/lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz" >>"$LOG_FILE" 2>&1
+  tar xf lazygit.tar.gz lazygit >>"$LOG_FILE" 2>&1
+  sudo install lazygit -D -t /usr/local/bin/ >>"$LOG_FILE" 2>&1
+}
+
 # Oh-my-zsh installation
 check_and_install_oh_my_zsh() {
   if [ -d "$HOME/.oh-my-zsh" ]; then
@@ -86,12 +93,13 @@ overwrite_file() {
 echo "Installing tools"
 
 # Update package lists and install prerequisites
-sudo apt-get update && sudo apt-get upgrade -y >>"$LOG_FILE" 2>&1
+sudo apt-get update >>"$LOG_FILE" 2>&1
+sudo apt-get upgrade -y >>"$LOG_FILE" 2>&1
 sudo apt install -y build-essential >>"$LOG_FILE" 2>&1
 
 # Install tools
 check_and_install "git" "sudo apt-get install -y git"
-check_and_install "lazygit" "sudo add-apt-repository ppa:lazygit-team/release -y && sudo apt-get update && sudo apt-get install -y lazygit"
+check_and_install_lazygit
 check_and_install "wezterm" "sudo add-apt-repository ppa:wez/ppa -y && sudo apt-get update && sudo apt-get install -y wezterm"
 check_and_install "zsh" "sudo apt-get install -y zsh"
 check_and_install "fzf" "sudo apt-get install -y fzf"
