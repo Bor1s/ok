@@ -82,6 +82,7 @@ echo "Installing tools"
 
 # Update package lists and install prerequisites
 sudo apt-get update && sudo apt-get upgrade -y
+sudo apt install build-essential
 
 # Install tools
 check_and_install "git" "sudo apt-get install -y git"
