@@ -24,10 +24,29 @@ install_fonts() {
 }
 
 check_and_install_lazygit() {
-  LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | \grep -Po '"tag_name": *"v\K[^"]*') >>"$LOG_FILE" 2>&1
-  curl -Lo lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/download/v${LAZYGIT_VERSION}/lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz" >>"$LOG_FILE" 2>&1
-  tar xf lazygit.tar.gz lazygit >>"$LOG_FILE" 2>&1
-  sudo install lazygit -D -t /usr/local/bin/ >>"$LOG_FILE" 2>&1
+  if command -v lazygit &>/dev/null; then
+    echo "lazygit is already installed ... OK"
+  else
+    echo "lazygit is not installed. Installing..."
+    LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | \grep -Po '"tag_name": *"v\K[^"]*') >>"$LOG_FILE" 2>&1
+    curl -Lo lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/download/v${LAZYGIT_VERSION}/lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz" >>"$LOG_FILE" 2>&1
+    tar xf lazygit.tar.gz lazygit >>"$LOG_FILE" 2>&1
+    sudo install lazygit -D -t /usr/local/bin/ >>"$LOG_FILE" 2>&1
+    echo "lazygit ... OK"
+  fi
+}
+
+check_and_install_wezterm() {
+  if command -v wezterm &>/dev/null; then
+    echo "wezterm is already installed ... OK"
+  else
+    echo "wezterm is not installed. Installing..."
+    curl -fsSL https://apt.fury.io/wez/gpg.key | sudo gpg --yes --dearmor -o /etc/apt/keyrings/wezterm-fury.gpg >>"$LOG_FILE" 2>&1
+    echo 'deb [signed-by=/etc/apt/keyrings/wezterm-fury.gpg] https://apt.fury.io/wez/ * *' | sudo tee /etc/apt/sources.list.d/wezterm.list >>"$LOG_FILE" 2>&1
+    sudo apt update >>"$LOG_FILE" 2>&1
+    sudo apt install wezterm >>"$LOG_FILE" 2>&1
+    echo "wezterm ... OK"
+  fi
 }
 
 # Oh-my-zsh installation
@@ -100,7 +119,7 @@ sudo apt install -y build-essential >>"$LOG_FILE" 2>&1
 # Install tools
 check_and_install "git" "sudo apt-get install -y git"
 check_and_install_lazygit
-check_and_install "wezterm" "sudo add-apt-repository ppa:wez/ppa -y && sudo apt-get update && sudo apt-get install -y wezterm"
+check_and_install_wezterm
 check_and_install "zsh" "sudo apt-get install -y zsh"
 check_and_install "fzf" "sudo apt-get install -y fzf"
 check_and_install "neovim" "sudo apt-get install -y neovim"
