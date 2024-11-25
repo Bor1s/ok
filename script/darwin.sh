@@ -75,7 +75,7 @@ copy_if_not_exists() {
   fi
 }
 
-overwite_file() {
+overwrite_file() {
   local source=$1
   local target=$2
 

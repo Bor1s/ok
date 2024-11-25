@@ -5,8 +5,8 @@ local wezterm = require("wezterm")
 local config = wezterm.config_builder()
 local act = wezterm.action
 
-config.initial_rows = 45
-config.initial_cols = 150
+config.initial_rows = 55
+config.initial_cols = 159
 
 -- config.font = wezterm.font("JetBrainsMono Nerd Font Mono")
 config.font = wezterm.font("Cascadia Code", { weight = "DemiLight", stretch = "Normal", style = "Normal" })
