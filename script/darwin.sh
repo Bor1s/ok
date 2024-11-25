@@ -40,7 +40,7 @@ check_and_install_rust() {
     echo "Rust is already installed ... OK"
   else
     echo "Installing Rust..."
-    curl https://sh.rustup.rs -sSf | sh >>"$LOG_FILE" 2>&1
+    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y >>"$LOG_FILE" 2>&1
     source "$HOME/.cargo/env" >>"$LOG_FILE" 2>&1
     echo "Rust ... OK"
   fi
