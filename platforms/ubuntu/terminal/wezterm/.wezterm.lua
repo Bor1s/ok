@@ -5,8 +5,8 @@ local wezterm = require("wezterm")
 local config = wezterm.config_builder()
 local act = wezterm.action
 
-config.initial_rows = 45
-config.initial_cols = 150
+config.initial_rows = 55
+config.initial_cols = 159
 
 -- config.font = wezterm.font("JetBrainsMono Nerd Font Mono")
 config.font = wezterm.font("Cascadia Code", { weight = "DemiLight", stretch = "Normal", style = "Normal" })
@@ -50,7 +50,7 @@ config.window_padding = {
 	bottom = 5,
 }
 
-config.scrollback_lines = 10000
+config.scrollback_lines = 100000
 
 -- timeout_milliseconds defaults to 1000 and can be omitted
 config.leader = { key = "l", mods = "ALT", timeout_milliseconds = 1000 }

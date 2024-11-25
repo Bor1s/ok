@@ -50,7 +50,7 @@ config.window_padding = {
 	bottom = 5,
 }
 
-config.scrollback_lines = 10000
+config.scrollback_lines = 100000
 
 -- timeout_milliseconds defaults to 1000 and can be omitted
 config.leader = { key = "l", mods = "ALT", timeout_milliseconds = 1000 }
