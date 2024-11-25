@@ -56,7 +56,7 @@ check_and_install_zellij() {
   fi
 }
 
-copy_if_not_exists() {
+copy_if_not_exist() {
   local source=$1
   local target=$2
 
