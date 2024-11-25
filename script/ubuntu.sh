@@ -118,7 +118,7 @@ check_and_install_lazygit
 check_and_install_wezterm
 check_and_install "zsh" "sudo apt-get install -y zsh"
 check_and_install "fzf" "sudo apt-get install -y fzf"
-check_and_install "neovim" "sudo apt-get install -y neovim"
+check_and_install "nvim" "sudo apt-get install -y neovim"
 check_and_install "ngrok" "curl -s https://ngrok-agent.s3.amazonaws.com/ngrok.asc | sudo tee /etc/apt/trusted.gpg.d/ngrok.asc >/dev/null && echo \"deb https://ngrok-agent.s3.amazonaws.com buster main\" | sudo tee /etc/apt/sources.list.d/ngrok.list && sudo apt-get update && sudo apt-get install -y ngrok"
 check_and_install_oh_my_zsh
 check_and_install_rust
