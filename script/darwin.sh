@@ -36,7 +36,7 @@ check_and_install_oh_my_zsh() {
 }
 
 check_and_install_rust() {
-  if command -v "$rustup" &>/dev/null; then
+  if command -v rustup &>/dev/null; then
     echo "Rust is already installed ... OK"
   else
     echo "Installing Rust..."
@@ -47,7 +47,7 @@ check_and_install_rust() {
 }
 
 check_and_install_zellij() {
-  if command -v "$zellij" &>/dev/null; then
+  if command -v zellij &>/dev/null; then
     echo "Zellij is already installed ... OK"
   else
     echo "Installing Zellij..."
