@@ -112,7 +112,7 @@ ZELLIJ_CONFIG_DIR="$HOME/.config/zellij"
 NEOVIM_CONFIG_DIR="$HOME/.config/nvim"
 
 overwrite_file "$TEMP_DIR/platforms/$PLATFORM/terminal/zshrc/.zshrc" "$ZSH_CONFIG_FILE"
-copy_if_not_exist "$TEMP_DIR/platfroms/$PLATFORM/terminal/wezterm/.wezterm.lua" "$WEZTERM_CONFIG_FILE"
+copy_if_not_exist "$TEMP_DIR/platforms/$PLATFORM/terminal/wezterm/.wezterm.lua" "$WEZTERM_CONFIG_FILE"
 copy_if_not_exist "$TEMP_DIR/platforms/$PLATFORM/terminal/wezterm" "$WEZTERM_CONFIG_DIR"
 copy_if_not_exist "$TEMP_DIR/platforms/$PLATFORM/terminal/zellij" "$ZELLIJ_CONFIG_DIR"
 copy_if_not_exist "$TEMP_DIR/platforms/$PLATFORM/terminal/nvim" "$NEOVIM_CONFIG_DIR"
