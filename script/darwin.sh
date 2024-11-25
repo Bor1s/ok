@@ -89,7 +89,7 @@ check_and_install "lazygit" "brew install lazygit"
 check_and_install "wezterm" "brew install --cask wezterm"
 check_and_install "zsh" "brew install zsh"
 check_and_install "fzf" "brew install fzf"
-check_and_install "neovim" "brew install neovim"
+check_and_install "nvim" "brew install neovim"
 check_and_install "ngrok" "brew install ngrok/ngrok/ngrok"
 check_and_install_oh_my_zsh
 check_and_install_rust
