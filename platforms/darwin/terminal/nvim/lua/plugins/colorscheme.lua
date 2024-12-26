@@ -3,10 +3,10 @@ return {
   {
     "LazyVim/LazyVim",
     opts = {
-      -- colorscheme = "kanagawa-wave",
+      colorscheme = "kanagawa-wave",
       -- colorscheme = "nordic",
       -- colorscheme = "melange",
-      colorscheme = "tokyonight-night",
+      -- colorscheme = "tokyonight-night",
     },
   },
 }

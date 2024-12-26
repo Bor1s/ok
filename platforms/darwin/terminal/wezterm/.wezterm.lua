@@ -16,8 +16,8 @@ config.enable_tab_bar = false
 config.tab_bar_at_bottom = true
 config.hide_tab_bar_if_only_one_tab = true
 
-config.color_scheme = "Tokyo Night"
--- config.color_scheme = "Kanagawa (Gogh)"
+-- config.color_scheme = "Tokyo Night"
+config.color_scheme = "Kanagawa (Gogh)"
 -- config.color_scheme = "Mono Cyan (Gogh)"
 -- config.color_scheme = "Nord (Gogh)"
 -- config.color_scheme = "Dracula"
