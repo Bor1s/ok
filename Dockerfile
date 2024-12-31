@@ -6,7 +6,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 
 # Install required packages: sudo, git, curl, and necessary utilities
 RUN apt-get update && \
-  apt-get install -y sudo git curl && \
+  apt-get install -y sudo curl && \
   apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Create a non-root user and add them to the sudo group

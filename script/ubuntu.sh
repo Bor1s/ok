@@ -5,16 +5,20 @@ set -e
 PLATFORM="ubuntu"
 LOG_FILE="/tmp/ok-install.log"
 
+update_packages() {
+  eval "sudo apt-get update" >>"$LOG_FILE" 2>&1
+}
+
 check_and_install() {
   local tool=$1
   local install_cmd=$2
 
-  if ! command -v "$tool" &>/dev/null; then
+  if command -v "$tool" &>/dev/null; then
+    echo "$tool is already installed ... OK"
+  else
     echo "Installing $tool..."
     eval "$install_cmd" >>"$LOG_FILE" 2>&1
     echo "$tool ... OK"
-  else
-    echo "$tool is already installed ... OK"
   fi
 }
 
@@ -118,6 +122,7 @@ sudo apt-get upgrade -y >>"$LOG_FILE" 2>&1
 sudo apt install -y build-essential >>"$LOG_FILE" 2>&1
 
 # Install tools
+update_packages
 check_and_install "git" "sudo apt-get install -y git"
 check_and_install_lazygit
 check_and_install_wezterm
