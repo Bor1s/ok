@@ -16,6 +16,7 @@ OK is designed to run on a fresh Mac OS or Ubuntu system and will install the fo
 - [git](https://git-scm.com/)
 - [lazygit](https://github.com/jesseduffield/lazygit)
 - [wezterm](https://wezfurlong.org/wezterm/index.html)
+- [ghostty](https://ghostty.org/) (only MacOS at the moment)
 - [zsh](https://www.zsh.org/)
 - [oh my zsh](https://ohmyz.sh/)
 - [fzf](https://github.com/junegunn/fzf)
@@ -32,6 +33,7 @@ When setup is fully complete you will see `Installation ... OK` message as the l
 ## Usage
 
 Just open your default terminal and run this command:
+
 ```bash
 curl -fsSL https://raw.githubusercontent.com/Bor1s/ok/main/install.sh | bash
 ```
