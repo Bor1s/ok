@@ -13,6 +13,9 @@ elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
     . /etc/os-release
     if [[ "$ID" == "ubuntu" ]]; then
       PLATFORM="ubuntu"
+
+      sudo apt-get update >>"$LOG_FILE" 2>&1
+      sudo apt-get install -y git >>"$LOG_FILE" 2>&1
     else
       PLATFORM="linux"
     fi
