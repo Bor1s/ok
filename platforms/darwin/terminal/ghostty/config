@@ -1,0 +1,5 @@
+theme = Kanagawa Wave
+font-family = Cascadia Code
+macos-option-as-alt = true
+window-save-state=always
+font-size=15

@@ -87,6 +87,7 @@ check_and_install "brew" '/bin/bash -c "$(curl -fsSL https://raw.githubuserconte
 check_and_install "git" "brew install git"
 check_and_install "lazygit" "brew install lazygit"
 check_and_install "wezterm" "brew install --cask wezterm"
+check_and_install "ghostty" "brew install --cask ghostty"
 check_and_install "zsh" "brew install zsh"
 check_and_install "fzf" "brew install fzf"
 check_and_install "nvim" "brew install neovim"

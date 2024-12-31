@@ -49,6 +49,11 @@ check_and_install_wezterm() {
   fi
 }
 
+check_and_install_ghostty() {
+  # Add Ghostty when official Ubuntu package is there.
+  echo "Ghossty needs to be built from source manually"
+}
+
 # Oh-my-zsh installation
 check_and_install_oh_my_zsh() {
   if [ -d "$HOME/.oh-my-zsh" ]; then
@@ -116,6 +121,7 @@ sudo apt install -y build-essential >>"$LOG_FILE" 2>&1
 check_and_install "git" "sudo apt-get install -y git"
 check_and_install_lazygit
 check_and_install_wezterm
+check_and_install_ghostty
 check_and_install "zsh" "sudo apt-get install -y zsh"
 check_and_install "fzf" "sudo apt-get install -y fzf"
 check_and_install "nvim" "sudo apt-get install -y neovim"
