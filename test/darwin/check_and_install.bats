@@ -6,8 +6,12 @@ setup() {
   LOG_FILE="$TEST_DIR/install.log"
   export LOG_FILE
 
-  # Source the script
-  source "$PWD/script/darwin.sh"
+  # Source the function file
+  source "$PWD/script/functions/check_and_install.sh"
+
+  # Debug: Show the function definition
+  echo "Function definition:"
+  declare -f check_and_install
 }
 
 @test "check_and_install function exists" {

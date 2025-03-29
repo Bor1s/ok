@@ -5,18 +5,8 @@ set -e
 PLATFORM="darwin"
 LOG_FILE="/tmp/ok-install.log"
 
-check_and_install() {
-  local tool=$1
-  local install_cmd=$2
-
-  if ! command -v "$tool" &>/dev/null; then
-    echo "Installing $tool..."
-    eval "$install_cmd" >>"$LOG_FILE" 2>&1
-    echo "$tool ... OK"
-  else
-    echo "$tool is already installed ... OK"
-  fi
-}
+# Source functions
+source "$(dirname "${BASH_SOURCE[0]}")/functions/check_and_install.sh"
 
 install_fonts() {
   brew install --cask font-cascadia-code >>"$LOG_FILE" 2>&1
