@@ -119,15 +119,12 @@ fi
 # Zellij
 eval "$(zellij setup --generate-auto-start zsh)"
 
+# Starship
+eval "$(starship init zsh)"
+
 # Custom super minimal prompt
-PROMPT=$'\uf0a9 '
-
-precmd() {
-  print -Pn "\e]0;%~\a"
-}
-
-# Pure prompt theme
-# fpath+=($HOME/.oh-my-zsh/custom/themes/pure)
+# PROMPT=$'\uf0a9 '
 #
-# autoload -U promptinit; promptinit
-# prompt pure
+# precmd() {
+#   print -Pn "\e]0;%~\a"
+# }

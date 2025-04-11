@@ -122,6 +122,7 @@ check_and_install_lazygit
 check_and_install_wezterm
 check_and_install_ghostty
 check_and_install "zsh" "sudo apt-get install -y zsh"
+check_and_install "starship" "sudo apt-get install -y starship"
 check_and_install "fzf" "sudo apt-get install -y fzf"
 check_and_install "nvim" "sudo apt-get install -y neovim"
 check_and_install "ngrok" "curl -s https://ngrok-agent.s3.amazonaws.com/ngrok.asc | sudo tee /etc/apt/trusted.gpg.d/ngrok.asc >/dev/null && echo \"deb https://ngrok-agent.s3.amazonaws.com buster main\" | sudo tee /etc/apt/sources.list.d/ngrok.list && sudo apt-get update && sudo apt-get install -y ngrok"
@@ -144,12 +145,14 @@ WEZTERM_CONFIG_DIR="$HOME/.config/wezterm"
 ZSH_CONFIG_FILE="$HOME/.zshrc"
 ZELLIJ_CONFIG_DIR="$HOME/.config/zellij"
 NEOVIM_CONFIG_DIR="$HOME/.config/nvim"
+STARSHIP_CONFIG_FILE="$HOME/.config/starship.toml"
 
 overwrite_file "$TEMP_DIR/platforms/$PLATFORM/terminal/zshrc/.zshrc" "$ZSH_CONFIG_FILE"
 copy_if_not_exists "$TEMP_DIR/platforms/$PLATFORM/terminal/wezterm/.wezterm.lua" "$WEZTERM_CONFIG_FILE"
 copy_if_not_exists "$TEMP_DIR/platforms/$PLATFORM/terminal/wezterm" "$WEZTERM_CONFIG_DIR"
 copy_if_not_exists "$TEMP_DIR/platforms/$PLATFORM/terminal/zellij" "$ZELLIJ_CONFIG_DIR"
 copy_if_not_exists "$TEMP_DIR/platforms/$PLATFORM/terminal/nvim" "$NEOVIM_CONFIG_DIR"
+copy_if_not_exists "$TEMP_DIR/platforms/$PLATFORM/terminal/starship/starship.toml" "$STARSHIP_CONFIG_FILE"
 
 # Cleanup tmp directory
 rm -rf "$TEMP_DIR" >>"$LOG_FILE" 2>&1
