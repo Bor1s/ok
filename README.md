@@ -39,3 +39,27 @@ curl -fsSL https://raw.githubusercontent.com/Bor1s/ok/main/install.sh | bash
 ```
 
 When OK is finished you can open Wezterm with zsh and enjoy nice Zellij session with Neovim.
+
+## Testing
+
+There are some test files that can be run via `bats`. I will add more tests in future:
+
+```bash
+bats test/darwin/check_and_install.bats
+```
+
+### Mac OS
+
+Majority of testing (except some test running some tests with `bats`) is done manually. Run and see if any installation/runtime issues appear. Need to be careful to avoid overriding `.zshrc`.
+
+### Ununtu
+
+1. Build and run a container from `Dockerfile`: `docker build -t ubuntu-custom .`
+2. Run container: `docker run --rm -it ubuntu-custom`
+3. Run `sudo apt-get update`
+4. Run `sudo apt-get upgrade`
+5. Use `curl -fsSL https://raw.githubusercontent.com/Bor1s/ok/main/install.sh | bash` to run the full command to see if instalation works.
+
+### Other OS
+
+Work in progress...
