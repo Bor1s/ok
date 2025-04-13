@@ -1,8 +1,11 @@
 # Warning: This config does not include keys that have an unset value
 
 "$schema" = "https://starship.rs/config-schema.json"
-format = "$all"
-right_format = ""
+# A minimal left prompt
+format = """$character"""
+# move the rest of the prompt to the right
+right_format = """$all"""
+
 continuation_prompt = "[∙](bright-black) "
 scan_timeout = 30
 command_timeout = 500
@@ -29,12 +32,20 @@ charging_symbol = "󰂄 "
 discharging_symbol = "󰂃 "
 unknown_symbol = "󰁽 "
 empty_symbol = "󰂎 "
-disabled = true
+disabled = false
 format = "[$symbol$percentage]($style) "
 
 [[battery.display]]
 threshold = 10
 style = "red bold"
+
+[[battery.display]]
+threshold = 70
+style = "yellow bold"
+
+[[battery.display]]
+threshold = 100
+style = "green bold"
 
 [buf]
 format = "with [$symbol($version )]($style)"
@@ -806,22 +817,22 @@ detect_files = ["DESCRIPTION"]
 detect_folders = [".Rproj.user"]
 
 [ruby]
-format = "via [$symbol($version )]($style)"
+format = "[$symbol($version )]($style)"
 version_format = "v${raw}"
-symbol = "💎 "
+symbol = ""
 style = "bold red"
-disabled = true
+disabled = false
 detect_extensions = ["rb"]
 detect_files = ["Gemfile", ".ruby-version"]
 detect_folders = []
 detect_variables = ["RUBY_VERSION", "RBENV_VERSION"]
 
 [rust]
-format = "via [$symbol($version )]($style)"
+format = "[$symbol($version )]($style)"
 version_format = "v${raw}"
-symbol = "🦀 "
+symbol = ""
 style = "bold red"
-disabled = true
+disabled = false
 detect_extensions = ["rs"]
 detect_files = ["Cargo.toml"]
 detect_folders = []
