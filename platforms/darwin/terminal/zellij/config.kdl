@@ -247,7 +247,8 @@ load_plugins {
 // Default: default
 // 
 // theme "tokyo-night-dark"
-theme "kanagawa"
+// theme "kanagawa"
+theme "pencil-light"
  
 // Choose the base input mode of zellij.
 // Default: normal
@@ -267,7 +268,7 @@ default_mode "locked"
 // Default: "default"
 // 
 // default_layout "compact"
-default_layout "welcome"
+// default_layout "welcome"
  
 // The folder in which Zellij will look for layouts
 // (Requires restart)
@@ -357,14 +358,14 @@ default_layout "welcome"
 // Default: <RANDOM>
 // 
 // session_name "My singleton session"
-session_name "craft"
+// session_name "craft"
  
 // When `session_name` is provided, attaches to that session
 // if it is already running or creates it otherwise.
 // Default: false
 // 
 // attach_to_session true
-attach_to_session true
+// attach_to_session true
  
 // Toggle between having Zellij lay out panes according to a predefined set of layouts whenever possible
 // Options:
