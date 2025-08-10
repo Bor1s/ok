@@ -83,6 +83,7 @@ check_and_install "starship" "brew install starship"
 check_and_install "fzf" "brew install fzf"
 check_and_install "nvim" "brew install neovim"
 check_and_install "ngrok" "brew install ngrok/ngrok/ngrok"
+check_and_install "mise" "brew install mise"
 check_and_install_oh_my_zsh
 check_and_install_rust
 check_and_install_zellij
