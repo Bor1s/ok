@@ -248,7 +248,8 @@ load_plugins {
 // 
 // theme "tokyo-night-dark"
 // theme "kanagawa"
-theme "pencil-light"
+// theme "pencil-light"
+theme "tokyo-night-storm"
  
 // Choose the base input mode of zellij.
 // Default: normal

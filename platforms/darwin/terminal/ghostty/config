@@ -1,4 +1,4 @@
-theme = Melange_light
+theme = tokyonight_moon
 font-family = JetBrains Nerd Mono
 macos-option-as-alt = true
 window-save-state=always
