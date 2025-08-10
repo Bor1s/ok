@@ -9,7 +9,7 @@ return {
       servers = {
         solargraph = {
           -- See: https://medium.com/@cristianvg/neovim-lsp-your-rbenv-gemset-and-solargraph-8896cb3df453
-          cmd = { os.getenv("HOME") .. "/.rbenv/shims/solargraph", "stdio" },
+          cmd = { os.getenv("HOME") .. "/.local/share/mise/shims/solargraph", "stdio" },
           root_dir = lspconfig.util.root_pattern("Gemfile", ".git", "."),
           settings = {
             solargraph = {
