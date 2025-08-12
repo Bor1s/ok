@@ -76,7 +76,6 @@ overwrite_file() {
 check_and_install "brew" '/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"'
 check_and_install "git" "brew install git"
 check_and_install "lazygit" "brew install lazygit"
-check_and_install "wezterm" "brew install --cask wezterm"
 check_and_install "ghostty" "brew install --cask ghostty"
 check_and_install "zsh" "brew install zsh"
 check_and_install "starship" "brew install starship"
@@ -98,16 +97,12 @@ TEMP_DIR=$(mktemp -d) >>"$LOG_FILE" 2>&1
 git clone "$REPO_URL" "$TEMP_DIR" >>"$LOG_FILE" 2>&1
 
 # Configuration directories
-WEZTERM_CONFIG_FILE="$HOME/.wezterm.lua"
-WEZTERM_CONFIG_DIR="$HOME/.config/wezterm"
 ZSH_CONFIG_FILE="$HOME/.zshrc"
 ZELLIJ_CONFIG_DIR="$HOME/.config/zellij"
 NEOVIM_CONFIG_DIR="$HOME/.config/nvim"
 STARSHIP_CONFIG_FILE="$HOME/.config/starship.toml"
 
 overwrite_file "$TEMP_DIR/platforms/$PLATFORM/terminal/zshrc/.zshrc" "$ZSH_CONFIG_FILE"
-copy_if_not_exist "$TEMP_DIR/platforms/$PLATFORM/terminal/wezterm/.wezterm.lua" "$WEZTERM_CONFIG_FILE"
-copy_if_not_exist "$TEMP_DIR/platforms/$PLATFORM/terminal/wezterm" "$WEZTERM_CONFIG_DIR"
 copy_if_not_exist "$TEMP_DIR/platforms/$PLATFORM/terminal/zellij" "$ZELLIJ_CONFIG_DIR"
 copy_if_not_exist "$TEMP_DIR/platforms/$PLATFORM/terminal/nvim" "$NEOVIM_CONFIG_DIR"
 copy_if_not_exist "$TEMP_DIR/platforms/$PLATFORM/terminal/starship/starship.toml" "$STARSHIP_CONFIG_FILE"
