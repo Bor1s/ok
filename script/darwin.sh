@@ -102,10 +102,12 @@ git clone "$REPO_URL" "$TEMP_DIR" >>"$LOG_FILE" 2>&1
 # Configuration directories
 ZSH_CONFIG_FILE="$HOME/.zshrc"
 ZELLIJ_CONFIG_DIR="$HOME/.config/zellij"
+GHOSTTY_CONFIG_DIR="$HOME/.config/ghostty"
 NEOVIM_CONFIG_DIR="$HOME/.config/nvim"
 STARSHIP_CONFIG_FILE="$HOME/.config/starship.toml"
 
 overwrite_file "$TEMP_DIR/platforms/$PLATFORM/terminal/zshrc/.zshrc" "$ZSH_CONFIG_FILE"
+copy_if_not_exist "$TEMP_DIR/platforms/$PLATFORM/terminal/ghostty" "$GHOSTTY_CONFIG_DIR"
 copy_if_not_exist "$TEMP_DIR/platforms/$PLATFORM/terminal/zellij" "$ZELLIJ_CONFIG_DIR"
 copy_if_not_exist "$TEMP_DIR/platforms/$PLATFORM/terminal/nvim" "$NEOVIM_CONFIG_DIR"
 copy_if_not_exist "$TEMP_DIR/platforms/$PLATFORM/terminal/starship/starship.toml" "$STARSHIP_CONFIG_FILE"
