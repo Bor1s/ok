@@ -11,6 +11,9 @@ source "$(dirname "${BASH_SOURCE[0]}")/functions/check_and_install.sh"
 install_fonts() {
   brew install --cask font-cascadia-code >>"$LOG_FILE" 2>&1
   echo "Cascadia Code font...OK"
+
+  brew install --cask font-jetbrains-mono-nerd-font >>"$LOG_FILE" 2>&1
+  echo "JetBrain Mono Nerd font...OK"
 }
 
 # Oh-my-zsh is an exception because "omz" commands is a function
