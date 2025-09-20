@@ -1,4 +1,4 @@
-theme = tokyonight_moon
+theme = TokyoNight Moon
 font-family = JetBrains Nerd Mono
 macos-option-as-alt = true
 window-save-state=always
